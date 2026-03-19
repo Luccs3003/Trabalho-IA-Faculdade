@@ -121,6 +121,25 @@ ax.scatter(x1, x2, y, color="red", label="dados reais")
 ax.plot_surface(x1_grid, x2_grid, y_grid, alpha=0.5, color="blue")
 plt.show()
 
+print("=" * 45)
+print("RESULTADOS - PROBLEMA 2 (Múltipla)")
+print("=" * 45)
+
+print(f"Equação: Dose = {modelo.beta[0]:.4f} + ({modelo.beta[1]:.4f} * mAmp) + ({modelo.beta[2]:.4f} * Tempo)")
+print(f"R2 Completo: {r2_completo:.4f} | R2 Ajustado: {r2_adj_completo:.4f}")
+print(f"Previsão (15 mAmp, 5 min): {previsao_especifica[0]:.4f}")
+
+print("\n(E) Modelo Alternativo (Apenas Corrente):")
+print(f"R2 Simples: {r2_simples:.4f} | R2 Ajustado: {r2_adj_simples:.4f}")
+
+print("\n(F) Modelo sem Intercepto (b0 = 0):")
+print(f"R2: {r2_zero:.4f} | RMSE: {rmse_zero:.4f}")
+
+print("\n(H) Comparação de Erros (Completo vs Simples):")
+print(f"RMSE Completo: {rmse_completo:.4f} | RMSE Simples: {rmse_simples:.4f}")
+print(f"MAE Completo:  {mae_completo:.4f}  | MAE Simples:  {mae_simples:.4f}")
+print("=" * 45)
+
 ## Plotagem com plotly
 fig = go.Figure()
 fig.add_scatter3d(x=x1, y=x2, z=y, mode="markers",
@@ -133,4 +152,4 @@ fig.update_layout(title="grafico da regressão multipla",
                              yaxis_title="x2",
                              zaxis_title="y"))
 
-fig.show()
+fig.write_html("grafico_interativo.html")

@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 class LinearRegression:
 
@@ -65,3 +66,15 @@ print("\n(e) Tabela de Resíduos")
 print(f"{'Obs':>4}  {'y_obs':>8}  {'y_ajust':>10}  {'residuo':>10}")
 for i in range(len(Y)):
     print(f"{i+1:>4}  {Y[i]:>8.1f}  {y_hat[i]:>10.4f}  {residuos[i]:>10.4f}")
+
+print("\nGerando gráfico...")
+plt.figure(figsize=(8, 5))
+plt.scatter(X, Y, color='blue', label='Dados Reais (NFL)')
+plt.plot(X, y_hat, color='red', linewidth=2, label='Reta de Regressão')
+
+plt.title('Regressão Linear Simples: Jardas/Tentativa vs Pontos Feitos')
+plt.xlabel('Jardas por Tentativa (x)')
+plt.ylabel('Pontos Feitos (y)')
+plt.legend()
+plt.grid(True, linestyle='--', alpha=0.7)
+plt.show()
